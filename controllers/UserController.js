@@ -76,7 +76,7 @@ const login = async (req, res) => {
 //Get current logged in user
 const getCurrentUser = async (req, res) => {
     const user = req.user;
-
+    console.log(user)
     res.status(200).json({user});
 }
 
@@ -117,9 +117,34 @@ const update = async (req, res) => {
     res.status(200).json(user);
 }
 
+//get user by id
+const getUserByid = async(req, res) => {
+    const {id} = req.params
+
+    try {
+        const user = await User.findById(mongoose.Types.ObjectId(id)).select('-password')
+        
+        //check if user exists
+        if(!user){
+            res.status(404).json({errors: ['Usuário não encontrado 1']})
+            return;
+        }
+        console.log(user)
+        res.status(200).json(user);
+
+    } catch (error) {
+        console.log(id)
+        res.status(404).json({errors: ['Usuário não encontrado 2']})
+        return;
+    }
+
+
+}
+
 module.exports ={
     register,
     login,
     getCurrentUser,
-    update
+    update,
+    getUserByid,
 }
