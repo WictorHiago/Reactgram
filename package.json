@@ -1,0 +1,26 @@
+{
+  "name": "react-gram",
+  "version": "1.0.0",
+  "description": "development project with React js",
+  "main": "app.js",
+  "scripts": {
+    "test": "dev",
+    "start": "nodemon app.js - App Started -",
+    "server": "nodemon ./app.js (script: server - App Started)"
+  },
+  "author": "devwictor",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "express-validator": "^6.14.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.6.1",
+    "multer": "^1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
