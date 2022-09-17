@@ -20,7 +20,7 @@ const register = async(req, res) => {
     const user = await User.findOne({email})
 
     if(user) {
-        res.status(422).json({errors: ['por favor, utilize outro email']})
+        res.status(422).json({errors: ['Por favor, utilize outro email.']})
         return
     }
 
@@ -37,7 +37,7 @@ const register = async(req, res) => {
 
     //if user was created successfully return TOKEN
     if(!newUser) {
-        res.status(422).json({errors:['houve um erro, por favor tente mais tarde'] })
+        res.status(422).json({errors:['Houve um erro, por favor tente mais tarde.'] })
         return
     }
     res.status(201).json({
@@ -55,12 +55,12 @@ const login = async (req, res) => {
 
     //check if user exists
     if(!user) {
-        res.status(404).json({errors:['Usuario não encontrado']})
+        res.status(404).json({errors:['Usuário não encontrado.']})
         return
     }
     //check if password matches
     if( !(await bcrypt.compare(password, user.password))) {
-        res.status(422).json({errors:['Senha inválida']})
+        res.status(422).json({errors:['Senha inválida.']})
         return
     }
 
@@ -126,7 +126,7 @@ const getUserByid = async(req, res) => {
         
         //check if user exists
         if(!user){
-            res.status(404).json({errors: ['Usuário não encontrado 1']})
+            res.status(404).json({errors: ['Usuário não encontrado #1']})
             return;
         }
         console.log(user)
@@ -134,7 +134,7 @@ const getUserByid = async(req, res) => {
 
     } catch (error) {
         console.log(id)
-        res.status(404).json({errors: ['Usuário não encontrado 2']})
+        res.status(404).json({errors: ['Usuário não encontrado #2']})
         return;
     }
 

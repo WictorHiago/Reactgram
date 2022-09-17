@@ -5,26 +5,26 @@ const userCreateValidation = () => {
         //field name
         body('name')
         .isString()
-        .withMessage('o nome é obrigatorio')
+        .withMessage('O nome é obrigat.')
         .isLength({min: 3})
-        .withMessage('o nome precisa ter 3 caracteres'),
+        .withMessage('O nome precisa ter 3 caracteres.'),
         //field email
         body('email').isString()
-        .withMessage('o email é obrigatorio')
+        .withMessage('O email é obrigatório.')
         .isEmail()
-        .withMessage('insira um email válido'),
+        .withMessage('Insira um email válido.'),
         //field password
         body('password')
         .isString()
         .isLength({min: 6})
-        .withMessage('a senha precisa ter no minimo 6 caracteres'),
+        .withMessage('A senha precisa ter no mínimo 6 caracteres.'),
         //compare password
         body('confirmPassword')
         .isString()
-        .withMessage('a confirmação de senha é obrigatorio')
+        .withMessage('A confirmação de senha é obrigatória.')
         .custom( (value, {req} )=> {
             if(value != req.body.password){
-                throw new Error('As senhas não são iguais')
+                throw new Error('As senhas não são iguais.')
             }
             return true
         })
@@ -35,7 +35,7 @@ const loginValidation = () => {
     return [
         body('email')
         .isString()
-        .withMessage('O email é obrigatorio')
+        .withMessage('O email é obrigatório.')
         .isEmail()
         .withMessage('Insira um email válido'),
         

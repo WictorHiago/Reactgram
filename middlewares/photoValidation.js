@@ -5,15 +5,15 @@ const photoInsertValidation = () => {
     body('title')
     .not()
     .equals('undefined')
-    .withMessage('O titulo e obrigatorio')
+    .withMessage('O título e obrigatorio.')
     .isString()
-    .withMessage('O titulo e obrigatorio')
+    .withMessage('O titulo e obrigatorio.')
     .isLength({min: 3})
-    .withMessage('O titulo precisa ter pelo menos 3 caracteres'),
+    .withMessage('O título precisa ter pelo menos 3 caracteres.'),
 
     body('image').custom((value, {req}) => {
         if(!req.file) {
-            throw new Error('A imagem é obrigatorio')
+            throw new Error('A imagem é obrigatória.')
         }
         return true
     })
@@ -26,13 +26,20 @@ const photoUpdateValidation = () => {
         body('title')
         .optional()
         .isString()
-        .withMessage('O titulo é obrigatorio')
+        .withMessage('O título é obrigatório.')
         .isLength({min: 3})
-        .withMessage('O titulo precisa ter pelo menos 3 caracteres'),
+        .withMessage('O título precisa ter pelo menos 3 caracteres.'),
+    ]
+}
+
+const commentValidation = () => {
+    return [
+        body('comment').isString().withMessage('O comentário é obrigatório.')
     ]
 }
 
 module.exports = {
     photoInsertValidation,
     photoUpdateValidation,
+    commentValidation,
 }
